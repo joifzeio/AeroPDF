@@ -1,0 +1,395 @@
+import { PDFDocument, rgb, degrees, StandardFonts } from 'pdf-lib';
+import * as pdfjsLib from 'pdfjs-dist';
+
+// Define the worker path dynamically matching our installed version
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
+
+/**
+ * Helper to convert hex color string to RGB object
+ */
+function hexToRgb(hex: string) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16) / 255,
+        g: parseInt(result[2], 16) / 255,
+        b: parseInt(result[3], 16) / 255,
+      }
+    : { r: 0, g: 0, b: 0 };
+}
+
+/**
+ * Helper to read a File object as an ArrayBuffer
+ */
+function readFileAsArrayBuffer(file: File): Promise<ArrayBuffer> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as ArrayBuffer);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+/**
+ * Helper to read a File object as a Data URL
+ */
+function readFileAsDataURL(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+
+/**
+ * 1. MERGE PDF FILES
+ */
+export async function mergePdfs(files: File[]): Promise<Uint8Array> {
+  const mergedPdf = await PDFDocument.create();
+
+  for (const file of files) {
+    const fileBytes = await readFileAsArrayBuffer(file);
+    const pdf = await PDFDocument.load(fileBytes);
+    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+    copiedPages.forEach((page) => mergedPdf.addPage(page));
+  }
+
+  return await mergedPdf.save();
+}
+
+/**
+ * 2. SPLIT / EXTRACT PAGES FROM PDF
+ */
+export async function splitPdf(file: File, rangesStr: string): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const sourcePdf = await PDFDocument.load(fileBytes);
+  const totalPages = sourcePdf.getPageCount();
+
+  const newPdf = await PDFDocument.create();
+  const pagesToExtract: number[] = [];
+
+  const segments = rangesStr.split(',');
+  for (const segment of segments) {
+    const cleanSegment = segment.trim();
+    if (cleanSegment.includes('-')) {
+      const [startStr, endStr] = cleanSegment.split('-');
+      const start = parseInt(startStr.trim(), 10);
+      const end = parseInt(endStr.trim(), 10);
+      
+      if (!isNaN(start) && !isNaN(end)) {
+        const min = Math.max(1, Math.min(start, end));
+        const max = Math.min(totalPages, Math.max(start, end));
+        for (let i = min; i <= max; i++) {
+          pagesToExtract.push(i - 1);
+        }
+      }
+    } else {
+      const pageNum = parseInt(cleanSegment, 10);
+      if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
+        pagesToExtract.push(pageNum - 1);
+      }
+    }
+  }
+
+  const uniquePages = Array.from(new Set(pagesToExtract)).sort((a, b) => a - b);
+
+  if (uniquePages.length === 0) {
+    throw new Error('No valid pages specified in range.');
+  }
+
+  const copiedPages = await newPdf.copyPages(sourcePdf, uniquePages);
+  copiedPages.forEach((page) => newPdf.addPage(page));
+
+  return await newPdf.save();
+}
+
+/**
+ * 3. PDF TO JPG CONVERSION
+ */
+export async function pdfToJpg(
+  file: File,
+  dpi: number = 150,
+  onProgress?: (current: number, total: number) => void
+): Promise<string[]> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const loadingTask = pdfjsLib.getDocument({ data: fileBytes });
+  const pdfDoc = await loadingTask.promise;
+  const numPages = pdfDoc.numPages;
+  const imageUrls: string[] = [];
+  const scale = dpi / 72;
+
+  for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+    const page = await pdfDoc.getPage(pageNum);
+    const viewport = page.getViewport({ scale });
+
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+
+    if (context) {
+      await page.render({
+        canvasContext: context,
+        viewport: viewport,
+        canvas: canvas // Required in newer pdfjs-dist versions
+      }).promise;
+
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+      imageUrls.push(dataUrl);
+    }
+
+    if (onProgress) {
+      onProgress(pageNum, numPages);
+    }
+  }
+
+  return imageUrls;
+}
+
+/**
+ * 4. JPG TO PDF CONVERSION
+ */
+export async function jpgToPdf(
+  files: File[],
+  layout: { size: string; orientation: string; margin: string }
+): Promise<Uint8Array> {
+  const pdfDoc = await PDFDocument.create();
+
+  let pageWidth = 595.27;
+  let pageHeight = 841.89;
+
+  if (layout.size.toLowerCase() === 'letter') {
+    pageWidth = 612;
+    pageHeight = 792;
+  }
+
+  if (layout.orientation.toLowerCase() === 'landscape') {
+    const temp = pageWidth;
+    pageWidth = pageHeight;
+    pageHeight = temp;
+  }
+
+  let margin = 0;
+  if (layout.margin.toLowerCase() === 'normal') {
+    margin = 36;
+  }
+
+  const contentWidth = pageWidth - margin * 2;
+  const contentHeight = pageHeight - margin * 2;
+
+  for (const file of files) {
+    const imgDataUrl = await readFileAsDataURL(file);
+    const isPng = file.type === 'image/png' || file.name.endsWith('.png');
+    
+    let embeddedImg;
+    if (isPng) {
+      embeddedImg = await pdfDoc.embedPng(imgDataUrl);
+    } else {
+      embeddedImg = await pdfDoc.embedJpg(imgDataUrl);
+    }
+
+    const { width: imgWidth, height: imgHeight } = embeddedImg.scale(1);
+    const scale = Math.min(contentWidth / imgWidth, contentHeight / imgHeight);
+    const drawWidth = imgWidth * scale;
+    const drawHeight = imgHeight * scale;
+
+    const x = margin + (contentWidth - drawWidth) / 2;
+    const y = margin + (contentHeight - drawHeight) / 2;
+
+    const page = pdfDoc.addPage([pageWidth, pageHeight]);
+    page.drawImage(embeddedImg, {
+      x,
+      y,
+      width: drawWidth,
+      height: drawHeight
+    });
+  }
+
+  return await pdfDoc.save();
+}
+
+/**
+ * 5. ROTATE PDF PAGES
+ */
+export async function rotatePdf(
+  file: File,
+  rotations: { [pageIndex: number]: number }
+): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+  const pages = pdfDoc.getPages();
+
+  for (let i = 0; i < pages.length; i++) {
+    const rot = rotations[i] || 0;
+    if (rot !== 0) {
+      const page = pages[i];
+      const currentRotation = page.getRotation().angle;
+      const nextRotation = (currentRotation + rot + 360) % 360;
+      page.setRotation(degrees(nextRotation));
+    }
+  }
+
+  return await pdfDoc.save();
+}
+
+/**
+ * 6. REMOVE PAGES FROM PDF
+ * Deletes selected page indices in descending order to prevent shift offsets
+ */
+export async function removePages(file: File, pagesStr: string): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+  const totalPages = pdfDoc.getPageCount();
+
+  const indicesToRemove: number[] = [];
+  const segments = pagesStr.split(',');
+
+  for (const segment of segments) {
+    const cleanSegment = segment.trim();
+    if (cleanSegment.includes('-')) {
+      const [startStr, endStr] = cleanSegment.split('-');
+      const start = parseInt(startStr.trim(), 10);
+      const end = parseInt(endStr.trim(), 10);
+      if (!isNaN(start) && !isNaN(end)) {
+        const min = Math.max(1, Math.min(start, end));
+        const max = Math.min(totalPages, Math.max(start, end));
+        for (let i = min; i <= max; i++) {
+          indicesToRemove.push(i - 1);
+        }
+      }
+    } else {
+      const pageNum = parseInt(cleanSegment, 10);
+      if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
+        indicesToRemove.push(pageNum - 1);
+      }
+    }
+  }
+
+  // Descending order sort is critical to avoid shift offsets during deletion loops
+  const uniqueIndices = Array.from(new Set(indicesToRemove)).sort((a, b) => b - a);
+
+  if (uniqueIndices.length === 0) {
+    throw new Error('No valid page numbers entered.');
+  }
+
+  if (uniqueIndices.length === totalPages) {
+    throw new Error('Cannot delete every page in the document.');
+  }
+
+  for (const index of uniqueIndices) {
+    pdfDoc.removePage(index);
+  }
+
+  return await pdfDoc.save();
+}
+
+/**
+ * 7. ADD PAGE NUMBERS TO PDF
+ */
+export async function addPageNumbers(
+  file: File,
+  position: 'bottom-center' | 'bottom-right' | 'top-right'
+): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+  const pages = pdfDoc.getPages();
+  const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+  for (let i = 0; i < pages.length; i++) {
+    const page = pages[i];
+    const { width, height } = page.getSize();
+    const text = `Page ${i + 1} of ${pages.length}`;
+    const textSize = 10;
+    const textWidth = font.widthOfTextAtSize(text, textSize);
+    const textHeight = font.heightAtSize(textSize);
+
+    let x = width / 2 - textWidth / 2;
+    let y = 30; // 30 points from bottom
+
+    if (position === 'bottom-right') {
+      x = width - textWidth - 36;
+    } else if (position === 'top-right') {
+      x = width - textWidth - 36;
+      y = height - textHeight - 30;
+    }
+
+    page.drawText(text, {
+      x,
+      y,
+      size: textSize,
+      font,
+      color: rgb(0.2, 0.2, 0.2),
+      opacity: 0.7
+    });
+  }
+
+  return await pdfDoc.save();
+}
+
+/**
+ * 8. ADD WATERMARK TO PDF
+ */
+export async function addWatermark(
+  file: File,
+  options: {
+    text: string;
+    size: number;
+    color: string;
+    opacity: number;
+    rotation: number;
+    position: string;
+  }
+): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+  const pages = pdfDoc.getPages();
+  
+  const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+  const rgbColor = hexToRgb(options.color);
+
+  for (const page of pages) {
+    const { width, height } = page.getSize();
+    const textWidth = font.widthOfTextAtSize(options.text, options.size);
+    const textHeight = font.heightAtSize(options.size); // fixed pdflib height method
+
+    let x = (width - textWidth) / 2;
+    let y = (height - textHeight) / 2;
+
+    switch (options.position.toLowerCase()) {
+      case 'top-left':
+        x = 36;
+        y = height - textHeight - 36;
+        break;
+      case 'top-right':
+        x = width - textWidth - 36;
+        y = height - textHeight - 36;
+        break;
+      case 'bottom-left':
+        x = 36;
+        y = 36;
+        break;
+      case 'bottom-right':
+        x = width - textWidth - 36;
+        y = 36;
+        break;
+      case 'center':
+      default:
+        x = (width - textWidth) / 2;
+        y = (height - textHeight) / 2;
+        break;
+    }
+
+    page.drawText(options.text, {
+      x,
+      y,
+      size: options.size,
+      font,
+      color: rgb(rgbColor.r, rgbColor.g, rgbColor.b),
+      opacity: options.opacity,
+      rotate: degrees(options.rotation),
+    });
+  }
+
+  return await pdfDoc.save();
+}
