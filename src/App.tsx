@@ -16,8 +16,8 @@ export default function App() {
   return (
     <Router>
       <div className="app-container">
-        {/* Global Header styled exactly like the screenshot */}
-        <header className="header">
+        {/* Global Header */}
+        <header className="header" style={{ justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
             <Link to="/" className="logo">
               Aero<span className="logo-heart">♥</span>PDF
@@ -33,24 +33,6 @@ export default function App() {
                 All PDF Tools <span style={{ fontSize: '0.65rem', marginLeft: '0.15rem' }}>▼</span>
               </Link>
             </nav>
-          </div>
-          
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a href="#login" className="nav-link" style={{ textTransform: 'none', fontWeight: 500, color: '#333' }}>Login</a>
-            <a 
-              href="#signup" 
-              className="btn-primary" 
-              style={{ 
-                padding: '0.45rem 1.25rem', 
-                fontSize: '0.85rem', 
-                borderRadius: '8px', 
-                fontWeight: 700,
-                boxShadow: 'none',
-                height: 'auto'
-              }}
-            >
-              Sign up
-            </a>
           </div>
         </header>
 
