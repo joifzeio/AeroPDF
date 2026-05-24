@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSeo } from '../hooks/useSeo';
 
@@ -66,6 +66,42 @@ export function Dashboard() {
       icon: (
         <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+        </svg>
+      )
+    },
+    {
+      id: 'pdf-to-txt',
+      title: 'PDF to Text',
+      description: 'Extract raw text strings page-by-page from your PDF document locally.',
+      path: '/pdf-to-txt',
+      category: 'convert',
+      icon: (
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+        </svg>
+      )
+    },
+    {
+      id: 'txt-to-pdf',
+      title: 'Text to PDF',
+      description: 'Stitch raw plain text files (.txt) or typed paragraphs into formatted paginated PDFs.',
+      path: '/txt-to-pdf',
+      category: 'convert',
+      icon: (
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zM9 15h6M9 18h6" />
+        </svg>
+      )
+    },
+    {
+      id: 'html-to-pdf',
+      title: 'HTML to PDF',
+      description: 'Paste custom HTML, view live sandboxed previews, and render them to standardized PDFs.',
+      path: '/html-to-pdf',
+      category: 'convert',
+      icon: (
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
         </svg>
       )
     },
@@ -147,7 +183,7 @@ export function Dashboard() {
           <input
             type="text"
             className="search-input"
-            placeholder="Search for a tool... (e.g. Merge, Page Numbers)"
+            placeholder="Search for a tool... (e.g. PDF to Text, Watermark)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

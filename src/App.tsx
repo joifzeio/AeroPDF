@@ -8,6 +8,9 @@ import { RotatePdf } from './pages/RotatePdf';
 import { RemovePages } from './pages/RemovePages';
 import { AddPageNumbers } from './pages/AddPageNumbers';
 import { WatermarkPdf } from './pages/WatermarkPdf';
+import { PdfToTxt } from './pages/PdfToTxt';
+import { TxtToPdf } from './pages/TxtToPdf';
+import { HtmlToPdf } from './pages/HtmlToPdf';
 
 export default function App() {
   return (
@@ -23,8 +26,8 @@ export default function App() {
             <Link to="/" className="nav-link">Dashboard</Link>
             <Link to="/merge-pdf" className="nav-link">Merge</Link>
             <Link to="/split-pdf" className="nav-link">Split</Link>
-            <Link to="/remove-pages" className="nav-link">Remove Pages</Link>
-            <Link to="/add-page-numbers" className="nav-link">Page Numbers</Link>
+            <Link to="/pdf-to-txt" className="nav-link">PDF to Text</Link>
+            <Link to="/txt-to-pdf" className="nav-link">Text to PDF</Link>
           </nav>
         </header>
 
@@ -40,6 +43,9 @@ export default function App() {
             <Route path="/remove-pages" element={<RemovePages />} />
             <Route path="/add-page-numbers" element={<AddPageNumbers />} />
             <Route path="/watermark-pdf" element={<WatermarkPdf />} />
+            <Route path="/pdf-to-txt" element={<PdfToTxt />} />
+            <Route path="/txt-to-pdf" element={<TxtToPdf />} />
+            <Route path="/html-to-pdf" element={<HtmlToPdf />} />
           </Routes>
         </main>
 
@@ -71,6 +77,9 @@ export default function App() {
               <ul>
                 <li><Link to="/pdf-to-jpg">PDF to JPG</Link></li>
                 <li><Link to="/jpg-to-pdf">JPG to PDF</Link></li>
+                <li><Link to="/pdf-to-txt">PDF to Text</Link></li>
+                <li><Link to="/txt-to-pdf">Text to PDF</Link></li>
+                <li><Link to="/html-to-pdf">HTML to PDF</Link></li>
               </ul>
             </div>
 

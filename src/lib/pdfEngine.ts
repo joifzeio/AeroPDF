@@ -132,7 +132,7 @@ export async function pdfToJpg(
       await page.render({
         canvasContext: context,
         viewport: viewport,
-        canvas: canvas // Required in newer pdfjs-dist versions
+        canvas: canvas
       }).promise;
 
       const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
@@ -235,7 +235,6 @@ export async function rotatePdf(
 
 /**
  * 6. REMOVE PAGES FROM PDF
- * Deletes selected page indices in descending order to prevent shift offsets
  */
 export async function removePages(file: File, pagesStr: string): Promise<Uint8Array> {
   const fileBytes = await readFileAsArrayBuffer(file);
@@ -266,7 +265,6 @@ export async function removePages(file: File, pagesStr: string): Promise<Uint8Ar
     }
   }
 
-  // Descending order sort is critical to avoid shift offsets during deletion loops
   const uniqueIndices = Array.from(new Set(indicesToRemove)).sort((a, b) => b - a);
 
   if (uniqueIndices.length === 0) {
@@ -305,7 +303,7 @@ export async function addPageNumbers(
     const textHeight = font.heightAtSize(textSize);
 
     let x = width / 2 - textWidth / 2;
-    let y = 30; // 30 points from bottom
+    let y = 30;
 
     if (position === 'bottom-right') {
       x = width - textWidth - 36;
@@ -351,7 +349,7 @@ export async function addWatermark(
   for (const page of pages) {
     const { width, height } = page.getSize();
     const textWidth = font.widthOfTextAtSize(options.text, options.size);
-    const textHeight = font.heightAtSize(options.size); // fixed pdflib height method
+    const textHeight = font.heightAtSize(options.size);
 
     let x = (width - textWidth) / 2;
     let y = (height - textHeight) / 2;
@@ -389,6 +387,115 @@ export async function addWatermark(
       opacity: options.opacity,
       rotate: degrees(options.rotation),
     });
+  }
+
+  return await pdfDoc.save();
+}
+
+/**
+ * 9. PDF TO TEXT CONVERSION
+ * Extracts text characters page-by-page client-side using pdfjsDist getTextContent
+ */
+export async function pdfToText(file: File): Promise<string> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const loadingTask = pdfjsLib.getDocument({ data: fileBytes });
+  const pdfDoc = await loadingTask.promise;
+  const numPages = pdfDoc.numPages;
+  let fullText = '';
+
+  for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+    const page = await pdfDoc.getPage(pageNum);
+    const textContent = await page.getTextContent();
+    const pageText = textContent.items
+      .map((item: any) => item.str)
+      .join(' ');
+    
+    fullText += `--- PAGE ${pageNum} ---\n${pageText}\n\n`;
+  }
+
+  return fullText.trim();
+}
+
+/**
+ * 10. TEXT TO PDF CONVERSION
+ * Compiles a text stream into a line-wrapped, dynamically paginated PDF document
+ */
+export async function textToPdf(
+  text: string,
+  options: { font: string; size: number; spacing: number; sheet: string; margin: number }
+): Promise<Uint8Array> {
+  const pdfDoc = await PDFDocument.create();
+  
+  let standardFont = StandardFonts.Helvetica;
+  if (options.font.toLowerCase() === 'courier') {
+    standardFont = StandardFonts.Courier;
+  } else if (options.font.toLowerCase() === 'timesroman') {
+    standardFont = StandardFonts.TimesRoman;
+  }
+  const font = await pdfDoc.embedFont(standardFont);
+
+  let pageWidth = 595.27; // A4 Standard
+  let pageHeight = 841.89;
+  if (options.sheet.toLowerCase() === 'letter') {
+    pageWidth = 612;
+    pageHeight = 792;
+  }
+
+  const margin = options.margin;
+  const contentWidth = pageWidth - margin * 2;
+  
+  // Split input into lines
+  const paragraphs = text.split('\n');
+  const lines: string[] = [];
+
+  // Wrap lines cleanly using dynamic width measurements
+  for (const para of paragraphs) {
+    if (para.trim() === '') {
+      lines.push('');
+      continue;
+    }
+
+    const words = para.split(/\s+/);
+    let currentLine = '';
+
+    for (const word of words) {
+      const testLine = currentLine ? `${currentLine} ${word}` : word;
+      const testWidth = font.widthOfTextAtSize(testLine, options.size);
+      
+      if (testWidth <= contentWidth) {
+        currentLine = testLine;
+      } else {
+        lines.push(currentLine);
+        currentLine = word;
+      }
+    }
+    if (currentLine) {
+      lines.push(currentLine);
+    }
+  }
+
+  // Draw lines across pages dynamically
+  const lineHeight = options.size * options.spacing;
+  let page = pdfDoc.addPage([pageWidth, pageHeight]);
+  let currentY = pageHeight - margin;
+
+  for (const line of lines) {
+    if (currentY - lineHeight < margin) {
+      page = pdfDoc.addPage([pageWidth, pageHeight]);
+      currentY = pageHeight - margin;
+    }
+
+    if (line.trim() !== '') {
+      page.drawText(line, {
+        x: margin,
+        y: currentY - options.size,
+        size: options.size,
+        font,
+        color: rgb(0.1, 0.1, 0.1),
+      });
+    }
+
+    currentY -= lineHeight;
   }
 
   return await pdfDoc.save();
