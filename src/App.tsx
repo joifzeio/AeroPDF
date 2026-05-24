@@ -16,19 +16,42 @@ export default function App() {
   return (
     <Router>
       <div className="app-container">
-        {/* Global Premium Header */}
+        {/* Global Header styled exactly like the screenshot */}
         <header className="header">
-          <Link to="/" className="logo">
-            <div className="logo-icon">A</div>
-            <span>Aero<span>PDF</span></span>
-          </Link>
-          <nav className="nav-links">
-            <Link to="/" className="nav-link">Dashboard</Link>
-            <Link to="/merge-pdf" className="nav-link">Merge</Link>
-            <Link to="/split-pdf" className="nav-link">Split</Link>
-            <Link to="/pdf-to-txt" className="nav-link">PDF to Text</Link>
-            <Link to="/txt-to-pdf" className="nav-link">Text to PDF</Link>
-          </nav>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+            <Link to="/" className="logo">
+              Aero<span className="logo-heart">♥</span>PDF
+            </Link>
+            <nav className="nav-links">
+              <Link to="/merge-pdf" className="nav-link">Merge PDF</Link>
+              <Link to="/split-pdf" className="nav-link">Split PDF</Link>
+              <Link to="/" className="nav-link">Compress PDF</Link>
+              <Link to="/" className="nav-link">
+                Convert PDF <span style={{ fontSize: '0.65rem', marginLeft: '0.15rem' }}>▼</span>
+              </Link>
+              <Link to="/" className="nav-link">
+                All PDF Tools <span style={{ fontSize: '0.65rem', marginLeft: '0.15rem' }}>▼</span>
+              </Link>
+            </nav>
+          </div>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <a href="#login" className="nav-link" style={{ textTransform: 'none', fontWeight: 500, color: '#333' }}>Login</a>
+            <a 
+              href="#signup" 
+              className="btn-primary" 
+              style={{ 
+                padding: '0.45rem 1.25rem', 
+                fontSize: '0.85rem', 
+                borderRadius: '8px', 
+                fontWeight: 700,
+                boxShadow: 'none',
+                height: 'auto'
+              }}
+            >
+              Sign up
+            </a>
+          </div>
         </header>
 
         {/* Core Workspace Wrapper */}
@@ -52,12 +75,11 @@ export default function App() {
         {/* Global SEO-friendly Footer */}
         <footer className="footer">
           <div className="footer-grid">
-            <div className="footer-col">
-              <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ background: 'var(--color-primary)', color: 'white', padding: '0.1rem 0.5rem', borderRadius: '4px', fontSize: '0.85rem' }}>A</span>
-                AeroPDF
+            <div className="footer-col" style={{ paddingRight: '2rem' }}>
+              <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', fontWeight: 900, fontSize: '1.2rem' }}>
+                Aero<span style={{ color: 'var(--color-primary)' }}>♥</span>PDF
               </h4>
-              <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', lineHeight: 1.6 }}>
+              <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', lineHeight: 1.6, color: '#64748b' }}>
                 The ultimate 100% private, client-side PDF utility editor. All compilations run securely in-browser. Your files never leave your computer.
               </p>
             </div>
