@@ -107,10 +107,10 @@ export default function App() {
 
           <div className="footer-bottom">
             <p>&copy; {new Date().getFullYear()} AeroPDF. MIT Licensed. 100% Secure Client-Side Web App.</p>
-            <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem' }}>
-              <span>Privacy Guaranteed 🔒</span>
-              <span>No Cookies Tracking 🍪</span>
-            </div>
+             <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem' }}>
+               <span>Privacy Guaranteed</span>
+               <span>No Cookies Tracking</span>
+             </div>
           </div>
         </footer>
       </div>

@@ -539,7 +539,7 @@ export function SignPdf() {
               </div>
             )}
             <p style={{ fontSize: '0.75rem', color: 'var(--color-slate-500)', marginTop: '0.75rem', textAlign: 'center' }}>
-              💡 Click anywhere inside the document preview to position the signature, or drag your mouse/finger across the canvas.
+              Click anywhere inside the document preview to position the signature, or drag your mouse/finger across the canvas.
             </p>
           </div>
 
@@ -565,7 +565,7 @@ export function SignPdf() {
                   cursor: 'pointer'
                 }}
               >
-                🖊️ Draw Mode
+                Draw Mode
               </button>
               <button
                 onClick={() => setSignMode('type')}
@@ -581,7 +581,7 @@ export function SignPdf() {
                   cursor: 'pointer'
                 }}
               >
-                ⌨️ Type Mode
+                Type Mode
               </button>
             </div>
 
@@ -756,7 +756,7 @@ export function SignPdf() {
                 cursor: signatureImageUri ? 'pointer' : 'not-allowed'
               }}
             >
-              🔒 Stamp Signature onto PDF
+              Stamp Signature onto PDF
             </button>
 
             <button

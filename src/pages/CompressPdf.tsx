@@ -194,7 +194,7 @@ export function CompressPdf() {
               fontWeight: 700,
               marginBottom: '1.5rem'
             }}>
-              🎉 You saved {savingsPercent}% of disk space!
+              You saved {savingsPercent}% of disk space!
             </div>
           ) : (
             <div style={{
@@ -206,7 +206,7 @@ export function CompressPdf() {
               fontWeight: 700,
               marginBottom: '1.5rem'
             }}>
-              ✨ Structure and layouts successfully optimized!
+              Structure and layouts successfully optimized!
             </div>
           )}
 
@@ -402,7 +402,7 @@ export function CompressPdf() {
               onClick={executeCompression}
               style={{ width: '100%', justifyContent: 'center', marginTop: '1rem' }}
             >
-              ⚡ Compress PDF
+              Compress PDF
             </button>
 
             <button className="btn-secondary" onClick={() => setSelectedFile(null)} style={{ width: '100%', justifyContent: 'center' }}>

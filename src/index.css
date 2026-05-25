@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
-/* --- AeroPDF Design System Variables --- */
+/* AeroPDF Design System Variables */
 :root {
   --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -25,7 +25,7 @@
   --transition-smooth: all 0.2s ease;
 }
 
-/* --- Base & Reset --- */
+/* Base and Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -56,7 +56,7 @@ a {
   text-decoration: none;
 }
 
-/* --- Core Layout & Shell --- */
+/* Core Layout and Shell */
 .app-container {
   display: flex;
   flex-direction: column;
@@ -132,7 +132,7 @@ a {
   padding: 1rem 2rem;
 }
 
-/* --- Hero Section & Pill Filters --- */
+/* Hero Section and Pill Filters */
 .hero-section {
   text-align: center;
   padding: 4rem 1rem 3rem 1rem;
@@ -174,7 +174,7 @@ a {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Flat Tools Grid & Cards matching screenshot --- */
+/* Flat Tools Grid and Cards */
 .tools-grid-flat {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -229,7 +229,7 @@ a {
   font-weight: 400;
 }
 
-/* --- Shared Workspace Elements --- */
+/* Shared Workspace Elements */
 .tool-header {
   text-align: center;
   max-width: 700px;
@@ -334,7 +334,7 @@ a {
   background: var(--color-slate-50);
 }
 
-/* --- Workspace Canvas / Grid --- */
+/* Workspace Canvas and Grid */
 .workspace-wrapper {
   display: flex;
   flex-direction: column;
@@ -477,7 +477,7 @@ a {
   color: var(--color-slate-600);
 }
 
-/* --- Options Workspace --- */
+/* Options Workspace */
 .options-layout {
   display: flex;
   gap: 2rem;
@@ -558,7 +558,7 @@ a {
   background: rgba(229, 50, 56, 0.01);
 }
 
-/* --- Loader Glass Modal --- */
+/* Loader Glass Modal */
 .loader-overlay {
   position: fixed;
   inset: 0;
@@ -607,7 +607,7 @@ a {
   font-size: 0.9rem;
 }
 
-/* --- Success / Download Page --- */
+/* Success and Download Page */
 .success-layout {
   display: flex;
   flex-direction: column;
@@ -702,7 +702,7 @@ a {
   height: 1.25rem;
 }
 
-/* --- SEO & FAQ Footer Sections --- */
+/* SEO and FAQ Footer Sections */
 .faq-section {
   max-width: 900px;
   margin: 6rem auto 3rem auto;
@@ -804,7 +804,7 @@ a {
   font-size: 0.8rem;
 }
 
-/* --- Scrollbar Customization --- */
+/* Scrollbar Customization */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
