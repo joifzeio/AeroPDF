@@ -148,6 +148,34 @@ export function Dashboard() {
       )
     },
     {
+      id: 'organize-pages',
+      title: 'Organize PDF',
+      description: 'Sort, delete, and visual compile custom page sequences or insert blank sheets.',
+      path: '/organize-pages',
+      category: 'organize',
+      icon: (
+        <div className="card-icon-box" style={{ background: '#f0fdfa', color: '#0d9488' }}>
+          <svg fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+      )
+    },
+    {
+      id: 'compress-pdf',
+      title: 'Compress PDF',
+      description: 'Reduce file size using lossless binary object stream deflation.',
+      path: '/compress-pdf',
+      category: 'organize',
+      icon: (
+        <div className="card-icon-box" style={{ background: '#f0f5ff', color: '#3b82f6' }}>
+          <svg fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v12m0-12c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm0 0v6" />
+          </svg>
+        </div>
+      )
+    },
+    {
       id: 'add-page-numbers',
       title: 'Page Numbers',
       description: 'Add page numbers into your PDF easily. Choose position, dimensions, and typography.',
@@ -169,6 +197,20 @@ export function Dashboard() {
       category: 'security',
       icon: (
         <div className="card-icon-box" style={{ background: '#f5f3ff', color: '#7c3aed' }}>
+          <svg fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685" />
+          </svg>
+        </div>
+      )
+    },
+    {
+      id: 'sign-pdf',
+      title: 'Sign PDF',
+      description: 'Draw responsive canvas ink signatures or type cursive lettering visually onto pages.',
+      path: '/sign-pdf',
+      category: 'security',
+      icon: (
+        <div className="card-icon-box" style={{ background: '#fffbeb', color: '#d97706' }}>
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685" />
           </svg>

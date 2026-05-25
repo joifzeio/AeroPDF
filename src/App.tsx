@@ -11,6 +11,9 @@ import { WatermarkPdf } from './pages/WatermarkPdf';
 import { PdfToTxt } from './pages/PdfToTxt';
 import { TxtToPdf } from './pages/TxtToPdf';
 import { HtmlToPdf } from './pages/HtmlToPdf';
+import { OrganizePages } from './pages/OrganizePages';
+import { SignPdf } from './pages/SignPdf';
+import { CompressPdf } from './pages/CompressPdf';
 
 export default function App() {
   return (
@@ -25,7 +28,7 @@ export default function App() {
             <nav className="nav-links">
               <Link to="/merge-pdf" className="nav-link">Merge PDF</Link>
               <Link to="/split-pdf" className="nav-link">Split PDF</Link>
-              <Link to="/" className="nav-link">Compress PDF</Link>
+              <Link to="/compress-pdf" className="nav-link">Compress PDF</Link>
               <Link to="/" className="nav-link">
                 Convert PDF <span style={{ fontSize: '0.65rem', marginLeft: '0.15rem' }}>▼</span>
               </Link>
@@ -51,6 +54,9 @@ export default function App() {
             <Route path="/pdf-to-txt" element={<PdfToTxt />} />
             <Route path="/txt-to-pdf" element={<TxtToPdf />} />
             <Route path="/html-to-pdf" element={<HtmlToPdf />} />
+            <Route path="/organize-pages" element={<OrganizePages />} />
+            <Route path="/sign-pdf" element={<SignPdf />} />
+            <Route path="/compress-pdf" element={<CompressPdf />} />
           </Routes>
         </main>
 
@@ -73,6 +79,7 @@ export default function App() {
                 <li><Link to="/split-pdf">Split PDF</Link></li>
                 <li><Link to="/rotate-pdf">Rotate PDF</Link></li>
                 <li><Link to="/remove-pages">Remove Pages</Link></li>
+                <li><Link to="/organize-pages">Organize Pages</Link></li>
               </ul>
             </div>
 
@@ -88,10 +95,12 @@ export default function App() {
             </div>
 
             <div className="footer-col">
-              <h4>Document Stamping</h4>
+              <h4>Security & Stamping</h4>
               <ul>
                 <li><Link to="/add-page-numbers">Add Page Numbers</Link></li>
                 <li><Link to="/watermark-pdf">Watermark PDF</Link></li>
+                <li><Link to="/sign-pdf">Sign PDF</Link></li>
+                <li><Link to="/compress-pdf">Compress PDF</Link></li>
               </ul>
             </div>
           </div>
@@ -108,3 +117,4 @@ export default function App() {
     </Router>
   );
 }
+

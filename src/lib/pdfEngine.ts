@@ -394,7 +394,6 @@ export async function addWatermark(
 
 /**
  * 9. PDF TO TEXT CONVERSION
- * Extracts text characters page-by-page client-side using pdfjsDist getTextContent
  */
 export async function pdfToText(file: File): Promise<string> {
   const fileBytes = await readFileAsArrayBuffer(file);
@@ -418,7 +417,6 @@ export async function pdfToText(file: File): Promise<string> {
 
 /**
  * 10. TEXT TO PDF CONVERSION
- * Compiles a text stream into a line-wrapped, dynamically paginated PDF document
  */
 export async function textToPdf(
   text: string,
@@ -434,7 +432,7 @@ export async function textToPdf(
   }
   const font = await pdfDoc.embedFont(standardFont);
 
-  let pageWidth = 595.27; // A4 Standard
+  let pageWidth = 595.27;
   let pageHeight = 841.89;
   if (options.sheet.toLowerCase() === 'letter') {
     pageWidth = 612;
@@ -444,11 +442,9 @@ export async function textToPdf(
   const margin = options.margin;
   const contentWidth = pageWidth - margin * 2;
   
-  // Split input into lines
   const paragraphs = text.split('\n');
   const lines: string[] = [];
 
-  // Wrap lines cleanly using dynamic width measurements
   for (const para of paragraphs) {
     if (para.trim() === '') {
       lines.push('');
@@ -474,7 +470,6 @@ export async function textToPdf(
     }
   }
 
-  // Draw lines across pages dynamically
   const lineHeight = options.size * options.spacing;
   let page = pdfDoc.addPage([pageWidth, pageHeight]);
   let currentY = pageHeight - margin;
@@ -497,6 +492,72 @@ export async function textToPdf(
 
     currentY -= lineHeight;
   }
+
+  return await pdfDoc.save();
+}
+
+/**
+ * 11. ORGANIZE PDF PAGES
+ * restructures page orders and inserts new blank sheets
+ */
+export async function organizePdf(
+  file: File,
+  pageSequence: { type: 'page' | 'blank'; originalIndex?: number }[]
+): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const sourcePdf = await PDFDocument.load(fileBytes);
+  const newPdf = await PDFDocument.create();
+
+  for (const item of pageSequence) {
+    if (item.type === 'page' && typeof item.originalIndex === 'number') {
+      const copied = await newPdf.copyPages(sourcePdf, [item.originalIndex]);
+      newPdf.addPage(copied[0]);
+    } else if (item.type === 'blank') {
+      // standard A4 sheet
+      newPdf.addPage([595.27, 841.89]);
+    }
+  }
+
+  return await newPdf.save();
+}
+
+/**
+ * 12. COMPRESS PDF
+ * shrinks pdf binary via stream level objectStream optimizations
+ */
+export async function compressPdf(file: File): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+
+  return await pdfDoc.save({
+    useObjectStreams: true
+  });
+}
+
+/**
+ * 13. STAMP SIGNATURE (E-SIGN)
+ * stamps signature PNG data onto exact sheet coordinates
+ */
+export async function stampSignature(
+  file: File,
+  signatureUri: string,
+  stamp: { pageIndex: number; x: number; y: number; width: number; height: number }
+): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+  
+  // Embed PNG signature image
+  const signatureImage = await pdfDoc.embedPng(signatureUri);
+  const pages = pdfDoc.getPages();
+  const page = pages[stamp.pageIndex];
+
+  // Stamp onto page
+  page.drawImage(signatureImage, {
+    x: stamp.x,
+    y: stamp.y,
+    width: stamp.width,
+    height: stamp.height
+  });
 
   return await pdfDoc.save();
 }
