@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Direct crawlers to the main sitemap
+Sitemap: sitemap.xml
