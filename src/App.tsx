@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Dashboard } from './pages/Dashboard';
 import { MergePdf } from './pages/MergePdf';
@@ -19,11 +20,26 @@ import { EditMetadata } from './pages/EditMetadata';
 import { CropPdf } from './pages/CropPdf';
 
 export default function App() {
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || saved === 'light') return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
   return (
     <Router>
       <div className="app-container">
         {/* Global Header */}
-        <header className="header" style={{ justifyContent: 'space-between' }}>
+        <header className="header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
             <Link to="/" className="logo">
               Aero<span className="logo-heart">♥</span>PDF
@@ -40,6 +56,24 @@ export default function App() {
               </Link>
             </nav>
           </div>
+
+          <button 
+            className="theme-toggle-btn" 
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
+          >
+            {theme === 'dark' ? (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            )}
+          </button>
         </header>
 
         {/* Core Workspace Wrapper */}

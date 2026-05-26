@@ -270,11 +270,11 @@ export function Dashboard() {
   return (
     <div className="dashboard-container">
       {/* Centered Hero Area matching screenshot */}
-      <section className="hero-section" style={{ padding: '4rem 1rem 3rem 1rem' }}>
-        <h1 className="hero-title" style={{ fontSize: '3rem', fontWeight: 800, color: '#1f242d', marginBottom: '1.5rem' }}>
+      <section className="hero-section">
+        <h1 className="hero-title">
           Every tool you need to work with PDFs in one place
         </h1>
-        <p className="hero-subtitle" style={{ fontSize: '1.25rem', color: '#656b7c', lineHeight: 1.6, maxWidth: '900px', margin: '0 auto' }}>
+        <p className="hero-subtitle">
           Every tool you need to use PDFs, at your fingertips. All are 100% FREE and easy to use! Merge, split, compress, convert, rotate, unlock and watermark PDFs with just a few clicks.
         </p>
 

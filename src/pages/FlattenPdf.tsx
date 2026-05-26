@@ -179,7 +179,7 @@ export function FlattenPdf() {
               This action is permanent for the output file: viewers will see your typed answers exactly as placed, but they will not be able to click on form inputs, change check boxes, or re-type anything.
             </p>
 
-            <div style={{ padding: '1rem', border: '1px solid var(--color-slate-200)', borderRadius: '0.5rem', backgroundColor: '#f8fafc', fontSize: '0.85rem', color: 'var(--color-slate-600)' }}>
+            <div style={{ padding: '1rem', border: '1px solid var(--color-slate-200)', borderRadius: '0.5rem', backgroundColor: 'var(--color-slate-50)', fontSize: '0.85rem', color: 'var(--color-slate-600)' }}>
               🔒 <strong>Compliance Notice:</strong> This process runs completely client-side in secure isolated sandbox memory. Your sensitive documentation is never uploaded or cached.
             </div>
           </div>
