@@ -14,6 +14,9 @@ import { HtmlToPdf } from './pages/HtmlToPdf';
 import { OrganizePages } from './pages/OrganizePages';
 import { SignPdf } from './pages/SignPdf';
 import { CompressPdf } from './pages/CompressPdf';
+import { FlattenPdf } from './pages/FlattenPdf';
+import { EditMetadata } from './pages/EditMetadata';
+import { CropPdf } from './pages/CropPdf';
 
 export default function App() {
   return (
@@ -57,6 +60,9 @@ export default function App() {
             <Route path="/organize-pages" element={<OrganizePages />} />
             <Route path="/sign-pdf" element={<SignPdf />} />
             <Route path="/compress-pdf" element={<CompressPdf />} />
+            <Route path="/flatten-pdf" element={<FlattenPdf />} />
+            <Route path="/edit-metadata" element={<EditMetadata />} />
+            <Route path="/crop-pdf" element={<CropPdf />} />
           </Routes>
         </main>
 
@@ -80,6 +86,7 @@ export default function App() {
                 <li><Link to="/rotate-pdf">Rotate PDF</Link></li>
                 <li><Link to="/remove-pages">Remove Pages</Link></li>
                 <li><Link to="/organize-pages">Organize Pages</Link></li>
+                <li><Link to="/crop-pdf">Crop PDF</Link></li>
               </ul>
             </div>
 
@@ -101,6 +108,8 @@ export default function App() {
                 <li><Link to="/watermark-pdf">Watermark PDF</Link></li>
                 <li><Link to="/sign-pdf">Sign PDF</Link></li>
                 <li><Link to="/compress-pdf">Compress PDF</Link></li>
+                <li><Link to="/flatten-pdf">Flatten PDF</Link></li>
+                <li><Link to="/edit-metadata">Edit Metadata</Link></li>
               </ul>
             </div>
           </div>

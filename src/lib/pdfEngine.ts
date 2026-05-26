@@ -561,3 +561,87 @@ export async function stampSignature(
 
   return await pdfDoc.save();
 }
+
+/**
+ * 14. FLATTEN PDF
+ * fuses interactive forms into flat visual vector blocks
+ */
+export async function flattenPdf(file: File): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+  const form = pdfDoc.getForm();
+  form.flatten();
+  return await pdfDoc.save();
+}
+
+/**
+ * 15. GET PDF METADATA
+ * extracts file information tags from a PDF document
+ */
+export async function getMetadata(file: File): Promise<{
+  title: string;
+  author: string;
+  subject: string;
+  keywords: string;
+  creator: string;
+  producer: string;
+}> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+  return {
+    title: pdfDoc.getTitle() || '',
+    author: pdfDoc.getAuthor() || '',
+    subject: pdfDoc.getSubject() || '',
+    keywords: pdfDoc.getKeywords() || '',
+    creator: pdfDoc.getCreator() || '',
+    producer: pdfDoc.getProducer() || ''
+  };
+}
+
+/**
+ * 16. SET PDF METADATA
+ * writes customized file information tags to a PDF document
+ */
+export async function setMetadata(
+  file: File,
+  meta: { title: string; author: string; subject: string; keywords: string; creator: string; producer: string }
+): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+
+  pdfDoc.setTitle(meta.title);
+  pdfDoc.setAuthor(meta.author);
+  pdfDoc.setSubject(meta.subject);
+  pdfDoc.setKeywords(meta.keywords.split(',').map((k) => k.trim()).filter((k) => k !== ''));
+  pdfDoc.setCreator(meta.creator);
+  pdfDoc.setProducer(meta.producer);
+
+  return await pdfDoc.save();
+}
+
+/**
+ * 17. CROP PDF PAGES
+ * adjusts CropBox boundary values for all pages
+ */
+export async function cropPdf(
+  file: File,
+  margins: { top: number; bottom: number; left: number; right: number }
+): Promise<Uint8Array> {
+  const fileBytes = await readFileAsArrayBuffer(file);
+  const pdfDoc = await PDFDocument.load(fileBytes);
+  const pages = pdfDoc.getPages();
+
+  for (const page of pages) {
+    const { width, height } = page.getSize();
+    
+    // Margins represent inset offsets in PDF points
+    const x = margins.left;
+    const y = margins.bottom;
+    const w = Math.max(10, width - margins.left - margins.right);
+    const h = Math.max(10, height - margins.top - margins.bottom);
+    
+    page.setCropBox(x, y, w, h);
+  }
+
+  return await pdfDoc.save();
+}
