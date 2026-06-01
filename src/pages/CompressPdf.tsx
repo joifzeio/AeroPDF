@@ -138,7 +138,7 @@ export function CompressPdf() {
 
       {resultBlob ? (
         <div className="success-layout">
-          <div className="success-badge-box" style={{ background: '#ecfdf5', color: '#10b981' }}>
+          <div className="success-badge-box">
             <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v12m0-12c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm0 0v6" />
             </svg>
@@ -256,30 +256,10 @@ export function CompressPdf() {
               {/* Card 1: Extreme */}
               <div 
                 onClick={() => setCompressionLevel('extreme')}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '1.5rem',
-                  padding: '1.25rem',
-                  border: compressionLevel === 'extreme' ? '2.5px solid var(--color-primary)' : '1.5px solid var(--color-slate-200)',
-                  borderRadius: '0.75rem',
-                  cursor: 'pointer',
-                  backgroundColor: compressionLevel === 'extreme' ? 'var(--color-rose-50)' : 'white',
-                  transition: 'all 0.2s ease',
-                  boxShadow: compressionLevel === 'extreme' ? '0 4px 6px -1px rgb(0 0 0 / 0.05)' : 'none'
-                }}
+                className={`option-card-interactive ${compressionLevel === 'extreme' ? 'active' : ''}`}
               >
-                <div style={{
-                  width: '1.5rem',
-                  height: '1.5rem',
-                  borderRadius: '50%',
-                  border: '2px solid var(--color-primary)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: compressionLevel === 'extreme' ? 'var(--color-primary)' : 'transparent'
-                }}>
-                  {compressionLevel === 'extreme' && <div style={{ width: '0.5rem', height: '0.5rem', borderRadius: '50%', background: 'white' }} />}
+                <div className={`option-card-circle ${compressionLevel === 'extreme' ? 'active' : ''}`}>
+                  {compressionLevel === 'extreme' && <div className="option-card-dot" />}
                 </div>
                 <div style={{ flex: 1 }}>
                   <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--color-slate-800)' }}>
@@ -289,7 +269,7 @@ export function CompressPdf() {
                     Aggressive stream stripping, maximum file size reduction.
                   </p>
                 </div>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#f43f5e', background: '#ffe4e6', padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>
+                <span className="badge-red" style={{ fontSize: '0.8rem', fontWeight: 700, padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>
                   Max Shrink
                 </span>
               </div>
@@ -297,30 +277,10 @@ export function CompressPdf() {
               {/* Card 2: Recommended */}
               <div 
                 onClick={() => setCompressionLevel('recommended')}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '1.5rem',
-                  padding: '1.25rem',
-                  border: compressionLevel === 'recommended' ? '2.5px solid var(--color-primary)' : '1.5px solid var(--color-slate-200)',
-                  borderRadius: '0.75rem',
-                  cursor: 'pointer',
-                  backgroundColor: compressionLevel === 'recommended' ? 'var(--color-rose-50)' : 'white',
-                  transition: 'all 0.2s ease',
-                  boxShadow: compressionLevel === 'recommended' ? '0 4px 6px -1px rgb(0 0 0 / 0.05)' : 'none'
-                }}
+                className={`option-card-interactive ${compressionLevel === 'recommended' ? 'active' : ''}`}
               >
-                <div style={{
-                  width: '1.5rem',
-                  height: '1.5rem',
-                  borderRadius: '50%',
-                  border: '2px solid var(--color-primary)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: compressionLevel === 'recommended' ? 'var(--color-primary)' : 'transparent'
-                }}>
-                  {compressionLevel === 'recommended' && <div style={{ width: '0.5rem', height: '0.5rem', borderRadius: '50%', background: 'white' }} />}
+                <div className={`option-card-circle ${compressionLevel === 'recommended' ? 'active' : ''}`}>
+                  {compressionLevel === 'recommended' && <div className="option-card-dot" />}
                 </div>
                 <div style={{ flex: 1 }}>
                   <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--color-slate-800)' }}>
@@ -330,7 +290,7 @@ export function CompressPdf() {
                     Lossless compression optimizations, perfect balance of file weight and print quality.
                   </p>
                 </div>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#16a34a', background: '#dcfce7', padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>
+                <span className="badge-green" style={{ fontSize: '0.8rem', fontWeight: 700, padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>
                   Best Balance
                 </span>
               </div>
@@ -338,30 +298,10 @@ export function CompressPdf() {
               {/* Card 3: Low */}
               <div 
                 onClick={() => setCompressionLevel('low')}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '1.5rem',
-                  padding: '1.25rem',
-                  border: compressionLevel === 'low' ? '2.5px solid var(--color-primary)' : '1.5px solid var(--color-slate-200)',
-                  borderRadius: '0.75rem',
-                  cursor: 'pointer',
-                  backgroundColor: compressionLevel === 'low' ? 'var(--color-rose-50)' : 'white',
-                  transition: 'all 0.2s ease',
-                  boxShadow: compressionLevel === 'low' ? '0 4px 6px -1px rgb(0 0 0 / 0.05)' : 'none'
-                }}
+                className={`option-card-interactive ${compressionLevel === 'low' ? 'active' : ''}`}
               >
-                <div style={{
-                  width: '1.5rem',
-                  height: '1.5rem',
-                  borderRadius: '50%',
-                  border: '2px solid var(--color-primary)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: compressionLevel === 'low' ? 'var(--color-primary)' : 'transparent'
-                }}>
-                  {compressionLevel === 'low' && <div style={{ width: '0.5rem', height: '0.5rem', borderRadius: '50%', background: 'white' }} />}
+                <div className={`option-card-circle ${compressionLevel === 'low' ? 'active' : ''}`}>
+                  {compressionLevel === 'low' && <div className="option-card-dot" />}
                 </div>
                 <div style={{ flex: 1 }}>
                   <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--color-slate-800)' }}>
@@ -371,7 +311,7 @@ export function CompressPdf() {
                     Slight structure alignment optimization, absolute maximum visual resolution.
                   </p>
                 </div>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#2563eb', background: '#dbeafe', padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>
+                <span className="badge-blue" style={{ fontSize: '0.8rem', fontWeight: 700, padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>
                   Max Quality
                 </span>
               </div>
@@ -382,7 +322,7 @@ export function CompressPdf() {
           <div className="options-sidebar" style={{ flex: 1 }}>
             <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-slate-800)' }}>File Details</h3>
             
-            <div style={{ margin: '1rem 0', padding: '0.75rem', background: '#f8fafc', borderRadius: '0.5rem', fontSize: '0.8rem' }}>
+            <div style={{ margin: '1rem 0', padding: '0.75rem', background: 'var(--color-slate-50)', borderRadius: '0.5rem', fontSize: '0.8rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                 <span style={{ color: 'var(--color-slate-500)' }}>File name:</span>
                 <span style={{ fontWeight: 600, color: 'var(--color-slate-700)', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap', maxWidth: '140px' }}>

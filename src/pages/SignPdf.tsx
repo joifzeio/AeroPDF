@@ -697,16 +697,10 @@ export function SignPdf() {
                     <button
                       key={f.id}
                       onClick={() => setSelectedFont(f.id)}
+                      className={`font-select-btn ${selectedFont === f.id ? 'active' : ''}`}
                       style={{
-                        padding: '0.5rem 1rem',
-                        textAlign: 'left',
-                        borderRadius: '0.375rem',
-                        border: selectedFont === f.id ? '2px solid var(--color-primary)' : '1px solid var(--color-slate-200)',
-                        backgroundColor: selectedFont === f.id ? 'var(--color-rose-50)' : 'white',
                         fontFamily: f.font,
-                        fontSize: '1.2rem',
-                        color: strokeColor,
-                        cursor: 'pointer'
+                        color: strokeColor
                       }}
                     >
                       {typedName || f.name}
@@ -718,7 +712,7 @@ export function SignPdf() {
 
             {/* Visual scaling sliders */}
             {signatureImageUri && (
-              <div style={{ padding: '1rem', border: '1px solid var(--color-slate-100)', borderRadius: '0.5rem', background: '#f8fafc', marginBottom: '1.5rem' }}>
+              <div style={{ padding: '1rem', border: '1px solid var(--color-slate-100)', borderRadius: '0.5rem', background: 'var(--color-slate-50)', marginBottom: '1.5rem' }}>
                 <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-slate-700)', marginBottom: '0.75rem' }}>
                   Stamping Dimensions:
                 </h4>

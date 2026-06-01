@@ -28,7 +28,7 @@ export function Dashboard() {
       path: '/merge-pdf',
       category: 'organize',
       icon: (
-        <div className="card-icon-box" style={{ background: '#fef2f2', color: '#ef4444' }}>
+        <div className="card-icon-box icon-red">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m0 0l-3-3m3 3l3-3M4 4h16M4 20h16" />
           </svg>
@@ -42,7 +42,7 @@ export function Dashboard() {
       path: '/split-pdf',
       category: 'organize',
       icon: (
-        <div className="card-icon-box" style={{ background: '#fff7ed', color: '#f97316' }}>
+        <div className="card-icon-box icon-orange">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0 0L12 12m0 0l1.5-6a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm-1.5 6l-6 6M12 12l6 6M3 12h18" />
           </svg>
@@ -56,7 +56,7 @@ export function Dashboard() {
       path: '/compress-pdf',
       category: 'organize',
       icon: (
-        <div className="card-icon-box" style={{ background: '#eff6ff', color: '#2563eb' }}>
+        <div className="card-icon-box icon-blue">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v12m0-12c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm0 0v6" />
           </svg>
@@ -70,7 +70,7 @@ export function Dashboard() {
       path: '/organize-pages',
       category: 'organize',
       icon: (
-        <div className="card-icon-box" style={{ background: '#f0fdfa', color: '#0d9488' }}>
+        <div className="card-icon-box icon-teal">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
@@ -84,7 +84,7 @@ export function Dashboard() {
       path: '/rotate-pdf',
       category: 'organize',
       icon: (
-        <div className="card-icon-box" style={{ background: '#f5f5f5', color: '#737373' }}>
+        <div className="card-icon-box icon-gray">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" />
           </svg>
@@ -98,7 +98,7 @@ export function Dashboard() {
       path: '/remove-pages',
       category: 'organize',
       icon: (
-        <div className="card-icon-box" style={{ background: '#fff1f2', color: '#f43f5e' }}>
+        <div className="card-icon-box icon-rose">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -112,7 +112,7 @@ export function Dashboard() {
       path: '/crop-pdf',
       category: 'organize',
       icon: (
-        <div className="card-icon-box" style={{ background: '#f7fee7', color: '#65a30d' }}>
+        <div className="card-icon-box icon-lime">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
           </svg>
@@ -126,7 +126,7 @@ export function Dashboard() {
       path: '/pdf-to-jpg',
       category: 'convert',
       icon: (
-        <div className="card-icon-box" style={{ background: '#fef9c3', color: '#ca8a04' }}>
+        <div className="card-icon-box icon-yellow">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 002.25 2.25" />
           </svg>
@@ -140,7 +140,7 @@ export function Dashboard() {
       path: '/jpg-to-pdf',
       category: 'convert',
       icon: (
-        <div className="card-icon-box" style={{ background: '#ecfeff', color: '#0891b2' }}>
+        <div className="card-icon-box icon-cyan">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25V18M9 8.25V18m0-9.75h9m-9 9.75h9m0-9.75v9.75" />
           </svg>
@@ -154,7 +154,7 @@ export function Dashboard() {
       path: '/pdf-to-txt',
       category: 'convert',
       icon: (
-        <div className="card-icon-box" style={{ background: '#ecfdf5', color: '#10b981' }}>
+        <div className="card-icon-box icon-emerald">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12" />
           </svg>
@@ -168,7 +168,7 @@ export function Dashboard() {
       path: '/txt-to-pdf',
       category: 'convert',
       icon: (
-        <div className="card-icon-box" style={{ background: '#faf5ff', color: '#a855f7' }}>
+        <div className="card-icon-box icon-purple">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25" />
           </svg>
@@ -182,7 +182,7 @@ export function Dashboard() {
       path: '/html-to-pdf',
       category: 'convert',
       icon: (
-        <div className="card-icon-box" style={{ background: '#fdf2f8', color: '#db2777' }}>
+        <div className="card-icon-box icon-pink">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
           </svg>
@@ -196,7 +196,7 @@ export function Dashboard() {
       path: '/add-page-numbers',
       category: 'security',
       icon: (
-        <div className="card-icon-box" style={{ background: '#eff6ff', color: '#2563eb' }}>
+        <div className="card-icon-box icon-blue">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 8.25h15m-16.5 6h18m-18 6h18M5.25 3h15" />
           </svg>
@@ -210,7 +210,7 @@ export function Dashboard() {
       path: '/watermark-pdf',
       category: 'security',
       icon: (
-        <div className="card-icon-box" style={{ background: '#f5f3ff', color: '#7c3aed' }}>
+        <div className="card-icon-box icon-violet">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685" />
           </svg>
@@ -224,7 +224,7 @@ export function Dashboard() {
       path: '/sign-pdf',
       category: 'security',
       icon: (
-        <div className="card-icon-box" style={{ background: '#fffbeb', color: '#d97706' }}>
+        <div className="card-icon-box icon-amber">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.83 18l-.8 2.685 2.685-.8L16.862 4.487z" />
           </svg>
@@ -238,7 +238,7 @@ export function Dashboard() {
       path: '/flatten-pdf',
       category: 'security',
       icon: (
-        <div className="card-icon-box" style={{ background: '#f8fafc', color: '#475569' }}>
+        <div className="card-icon-box icon-slate">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
           </svg>
@@ -252,7 +252,7 @@ export function Dashboard() {
       path: '/edit-metadata',
       category: 'security',
       icon: (
-        <div className="card-icon-box" style={{ background: '#ecfeff', color: '#0891b2' }}>
+        <div className="card-icon-box icon-cyan">
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.5rem', height: '1.5rem' }}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.43l-1.003.828c-.293.241-.438.613-.43.992a6.72 6.72 0 010 .252c-.008.379.137.751.43.992l1.003.828c.435.36.563.976.261 1.43l-1.296 2.247a1.125 1.125 0 01-1.37.49l-1.216-.456c-.356-.133-.751-.072-1.076.124a6.549 6.549 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.43l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.252c.007-.379-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.49l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.28z" />
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

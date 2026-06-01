@@ -135,7 +135,7 @@ export function EditMetadata() {
 
       {resultBlob ? (
         <div className="success-layout">
-          <div className="success-badge-box" style={{ background: '#ecfeff', color: '#0891b2' }}>
+          <div className="success-badge-box">
             <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685" />
             </svg>
@@ -326,7 +326,7 @@ export function EditMetadata() {
           <div className="options-sidebar" style={{ flex: 1 }}>
             <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-slate-800)' }}>Details</h3>
             
-            <div style={{ margin: '1rem 0', padding: '0.75rem', background: '#f8fafc', borderRadius: '0.5rem', fontSize: '0.8rem' }}>
+            <div style={{ margin: '1rem 0', padding: '0.75rem', background: 'var(--color-slate-50)', borderRadius: '0.5rem', fontSize: '0.8rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                 <span style={{ color: 'var(--color-slate-500)' }}>File name:</span>
                 <span style={{ fontWeight: 600, color: 'var(--color-slate-700)', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap', maxWidth: '120px' }}>

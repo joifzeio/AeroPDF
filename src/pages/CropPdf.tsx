@@ -176,7 +176,7 @@ export function CropPdf() {
 
       {resultBlob ? (
         <div className="success-layout">
-          <div className="success-badge-box" style={{ background: '#f0fdf4', color: '#16a34a' }}>
+          <div className="success-badge-box">
             <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
             </svg>
@@ -239,7 +239,7 @@ export function CropPdf() {
                 boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.05)',
                 borderRadius: '0.5rem',
                 overflow: 'hidden',
-                background: '#f8fafc'
+                background: 'var(--color-slate-50)'
               }}>
                 {/* Visual cover page render */}
                 <img

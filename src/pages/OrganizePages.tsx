@@ -263,7 +263,7 @@ export function OrganizePages() {
                     →
                   </button>
 
-                  <div className="file-thumbnail" style={{ height: '160px', background: page.type === 'blank' ? '#f8fafc' : 'white' }}>
+                  <div className="file-thumbnail" style={{ height: '160px', background: page.type === 'blank' ? 'var(--color-slate-100)' : 'var(--bg-primary)' }}>
                     {page.type === 'page' ? (
                       <img src={page.thumbnail} alt={`Page ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                     ) : (
