@@ -42,53 +42,50 @@ export default function App() {
       <div className="app-container">
         {/* Global Header */}
         <header className="header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
-            <Link to="/" className="logo">
-              TC<span className="logo-heart">♥</span>PDF
+          <button 
+            className="mobile-menu-toggle"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Open navigation menu"
+            title="Open navigation menu"
+          >
+            <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.25rem', height: '1.25rem' }}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+
+          <Link to="/" className="logo">
+            TC<span className="logo-heart">♥</span>PDF
+          </Link>
+
+          <nav className="nav-links">
+            <Link to="/merge-pdf" className="nav-link">Merge PDF</Link>
+            <Link to="/split-pdf" className="nav-link">Split PDF</Link>
+            <Link to="/compress-pdf" className="nav-link">Compress PDF</Link>
+            <Link to="/" className="nav-link">
+              Convert PDF <span style={{ fontSize: '0.65rem', marginLeft: '0.15rem' }}>▼</span>
             </Link>
-            <nav className="nav-links">
-              <Link to="/merge-pdf" className="nav-link">Merge PDF</Link>
-              <Link to="/split-pdf" className="nav-link">Split PDF</Link>
-              <Link to="/compress-pdf" className="nav-link">Compress PDF</Link>
-              <Link to="/" className="nav-link">
-                Convert PDF <span style={{ fontSize: '0.65rem', marginLeft: '0.15rem' }}>▼</span>
-              </Link>
-              <Link to="/" className="nav-link">
-                All PDF Tools <span style={{ fontSize: '0.65rem', marginLeft: '0.15rem' }}>▼</span>
-              </Link>
-            </nav>
-          </div>
+            <Link to="/" className="nav-link">
+              All PDF Tools <span style={{ fontSize: '0.65rem', marginLeft: '0.15rem' }}>▼</span>
+            </Link>
+          </nav>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <button 
-              className="theme-toggle-btn" 
-              onClick={toggleTheme}
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
-              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
-            >
-              {theme === 'dark' ? (
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
-                  <circle cx="12" cy="12" r="4" />
-                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
-                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-                </svg>
-              )}
-            </button>
-
-            <button 
-              className="mobile-menu-toggle"
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open navigation menu"
-              title="Open navigation menu"
-            >
-              <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.25rem', height: '1.25rem' }}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          <button 
+            className="theme-toggle-btn" 
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
+          >
+            {theme === 'dark' ? (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
               </svg>
-            </button>
-          </div>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            )}
+          </button>
         </header>
 
         {/* Mobile Navigation Drawer */}
