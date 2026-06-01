@@ -70,8 +70,8 @@ TCPDF acknowledges and is built upon standard open-source core libraries:
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/joifzeio/TCPDF.git
-    cd TCPDF
+    git clone https://github.com/nathandotdev/AeroPDF.git
+    cd AeroPDF
     ```
 
 2.  **Install dependencies**:
