@@ -136,11 +136,11 @@ export function PdfToJpg() {
     },
     {
       q: 'How will I receive the converted images?',
-      a: 'If your PDF is a single page, it downloads as a single JPEG image directly. For multi-page PDFs, AeroPDF packages all pages into a single ZIP archive to save storage space and keep your device clean.'
+      a: 'If your PDF is a single page, it downloads as a single JPEG image directly. For multi-page PDFs, TCPDF packages all pages into a single ZIP archive to save storage space and keep your device clean.'
     },
     {
       q: 'Are the files sent to a server for parsing?',
-      a: 'No. AeroPDF does not have a backend server. The rendering of pages is completed strictly client-side inside your browser thread using canvas APIs, meaning your documents remain 100% private.'
+      a: 'No. TCPDF does not have a backend server. The rendering of pages is completed strictly client-side inside your browser thread using canvas APIs, meaning your documents remain 100% private.'
     }
   ];
 

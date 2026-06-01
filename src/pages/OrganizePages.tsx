@@ -159,7 +159,7 @@ export function OrganizePages() {
   const faqs = [
     {
       q: 'Will reordering degrade vector elements?',
-      a: 'No. AeroPDF performs reordering natively within the structure, preserving vector text layers, hyperlinks, and embedded fonts without degradation.'
+      a: 'No. TCPDF performs reordering natively within the structure, preserving vector text layers, hyperlinks, and embedded fonts without degradation.'
     },
     {
       q: 'Can I add multiple blank pages?',

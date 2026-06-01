@@ -8,8 +8,8 @@ export interface SeoProps {
 export function useSeo(title: string, description: string) {
   useEffect(() => {
     // Update Title
-    const baseTitle = 'AeroPDF - 100% Secure Client-Side PDF Tools';
-    document.title = title ? `${title} | AeroPDF` : baseTitle;
+    const baseTitle = 'TCPDF - 100% Secure Client-Side PDF Tools';
+    document.title = title ? `${title} | TCPDF` : baseTitle;
 
     // Update Meta Description
     let metaDescription = document.querySelector('meta[name="description"]');

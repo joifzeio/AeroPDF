@@ -118,7 +118,7 @@ export function RemovePages() {
     },
     {
       q: 'Is it safe to remove sensitive pages here?',
-      a: 'Yes, AeroPDF processes all file removals in-browser on your local processor. The document is modified locally and is never uploaded anywhere, guaranteeing absolute privacy.'
+      a: 'Yes, TCPDF processes all file removals in-browser on your local processor. The document is modified locally and is never uploaded anywhere, guaranteeing absolute privacy.'
     }
   ];
 

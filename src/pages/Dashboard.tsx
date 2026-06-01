@@ -16,7 +16,7 @@ export function Dashboard() {
   const [activeTab, setActiveTab] = useState<'all' | 'organize' | 'convert' | 'security'>('all');
 
   useSeo(
-    'AeroPDF - Free 100% Secure Client-Side PDF Tools',
+    'TCPDF - Free 100% Secure Client-Side PDF Tools',
     'Edit, merge, split, rotate, convert, watermark, and protect your PDF documents completely locally inside your browser. Absolute file privacy, no server uploads, ultra-fast.'
   );
 

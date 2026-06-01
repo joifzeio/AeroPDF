@@ -114,7 +114,7 @@ export function PdfToTxt() {
   const faqs = [
     {
       q: 'Will OCR (scanned text extraction) be performed?',
-      a: 'AeroPDF client-side extracts standard digital vector text content. If your document consists of photo-scans without pre-recognized text layers, it may extract as blank. An active text layer is required.'
+      a: 'TCPDF client-side extracts standard digital vector text content. If your document consists of photo-scans without pre-recognized text layers, it may extract as blank. An active text layer is required.'
     },
     {
       q: 'Are my document characters secure?',
@@ -221,7 +221,7 @@ export function PdfToTxt() {
           <div className="options-sidebar">
             <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-slate-800)' }}>Extraction</h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--color-slate-500)', lineHeight: 1.5 }}>
-              AeroPDF will scan your file structures page-by-page and compile a text buffer for download.
+              TCPDF will scan your file structures page-by-page and compile a text buffer for download.
             </p>
 
             <button

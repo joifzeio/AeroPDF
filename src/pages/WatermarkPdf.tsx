@@ -14,7 +14,7 @@ export function WatermarkPdf() {
   const [pageCount, setPageCount] = useState(0);
 
   // Watermark Settings
-  const [text, setText] = useState('AeroPDF CONFIDENTIAL');
+  const [text, setText] = useState('TCPDF CONFIDENTIAL');
   const [size, setSize] = useState(48);
   const [color, setColor] = useState('#ef4444');
   const [opacity, setOpacity] = useState(0.4);
@@ -177,11 +177,11 @@ export function WatermarkPdf() {
   const faqs = [
     {
       q: 'Will the watermark be stamped on all pages?',
-      a: 'Yes. AeroPDF applies the designated text watermark with your selected dimensions, angles, transparency, and alignments to every page in the PDF document.'
+      a: 'Yes. TCPDF applies the designated text watermark with your selected dimensions, angles, transparency, and alignments to every page in the PDF document.'
     },
     {
       q: 'Can I choose my font family and colors?',
-      a: 'To guarantee standard cross-platform rendering, AeroPDF utilizes embedded Helvetica Bold fonts. You can choose any hex color via our integrated spectrum picker.'
+      a: 'To guarantee standard cross-platform rendering, TCPDF utilizes embedded Helvetica Bold fonts. You can choose any hex color via our integrated spectrum picker.'
     },
     {
       q: 'Are the files sent to an external server?',

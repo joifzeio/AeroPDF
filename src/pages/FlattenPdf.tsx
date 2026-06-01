@@ -107,7 +107,7 @@ export function FlattenPdf() {
     },
     {
       q: 'Are my form documents safe on this site?',
-      a: 'AeroPDF executes all scripts entirely inside your local browser tab. No forms, documents, or personal inputs are uploaded to a server.'
+      a: 'TCPDF executes all scripts entirely inside your local browser tab. No forms, documents, or personal inputs are uploaded to a server.'
     }
   ];
 

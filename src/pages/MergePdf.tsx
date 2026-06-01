@@ -151,7 +151,7 @@ export function MergePdf() {
   const faqs = [
     {
       q: 'Is it safe to merge my PDFs here?',
-      a: 'Absolutely. AeroPDF works 100% inside your browser using WebAssembly. Your files are processed locally on your hardware and never sent to our servers, assuring maximum security.'
+      a: 'Absolutely. TCPDF works 100% inside your browser using WebAssembly. Your files are processed locally on your hardware and never sent to our servers, assuring maximum security.'
     },
     {
       q: 'Is there a limit on file quantity or size?',

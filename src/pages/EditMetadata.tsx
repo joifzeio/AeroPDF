@@ -115,7 +115,7 @@ export function EditMetadata() {
     },
     {
       q: 'Does editing metadata alter my page layouts?',
-      a: 'No. AeroPDF updates the standard PDF header information tables natively without modifying any text layers, images, vectors, or margins.'
+      a: 'No. TCPDF updates the standard PDF header information tables natively without modifying any text layers, images, vectors, or margins.'
     },
     {
       q: 'Are these tags preserved when sharing?',
@@ -285,7 +285,7 @@ export function EditMetadata() {
                   type="text"
                   value={metadata.creator}
                   onChange={(e) => handleFieldChange('creator', e.target.value)}
-                  placeholder="e.g. AeroPDF Editor"
+                  placeholder="e.g. TCPDF Editor"
                   style={{
                     width: '100%',
                     padding: '0.65rem 0.75rem',

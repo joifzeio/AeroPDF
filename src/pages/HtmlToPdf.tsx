@@ -60,7 +60,7 @@ export function HtmlToPdf() {
   <div className="invoice-card">
     <div class="header-group">
       <div>
-        <div class="title">AeroPDF Invoice</div>
+        <div class="title">TCPDF Invoice</div>
         <p>100% Private Client-Side Tools</p>
       </div>
       <div class="invoice-num">
@@ -72,7 +72,7 @@ export function HtmlToPdf() {
 
     <div>
       <h4>Billed To:</h4>
-      <p>AeroPDF Verified User</p>
+      <p>TCPDF Verified User</p>
       <p>Local Sandbox Environment</p>
     </div>
 
@@ -87,7 +87,7 @@ export function HtmlToPdf() {
       </thead>
       <tbody>
         <tr>
-          <td>AeroPDF Client-Side Merging</td>
+          <td>TCPDF Client-Side Merging</td>
           <td>1</td>
           <td>$0.00</td>
           <td>$0.00</td>
@@ -131,7 +131,7 @@ export function HtmlToPdf() {
   const faqs = [
     {
       q: 'How does HTML to PDF rendering work?',
-      a: 'AeroPDF sets up a secure, sandboxed iframe container to load your raw HTML and custom CSS rules. When you click "Export to PDF", it triggers the browser\'s high-performance native PDF printing engine. This lets you select "Save as PDF" to render pages with vector fonts and custom background colors.'
+      a: 'TCPDF sets up a secure, sandboxed iframe container to load your raw HTML and custom CSS rules. When you click "Export to PDF", it triggers the browser\'s high-performance native PDF printing engine. This lets you select "Save as PDF" to render pages with vector fonts and custom background colors.'
     },
     {
       q: 'Can I include external stylesheets or custom fonts?',
@@ -139,7 +139,7 @@ export function HtmlToPdf() {
     },
     {
       q: 'Are my HTML code or invoice tables secure?',
-      a: 'Absolutely. AeroPDF has no server connections. Your HTML is rendered completely client-side in the iframe viewport and exported locally on your hardware.'
+      a: 'Absolutely. TCPDF has no server connections. Your HTML is rendered completely client-side in the iframe viewport and exported locally on your hardware.'
     }
   ];
 

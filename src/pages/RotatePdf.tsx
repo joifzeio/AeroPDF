@@ -143,7 +143,7 @@ export function RotatePdf() {
   const faqs = [
     {
       q: 'Will rotating pages degrade my text or vector resolution?',
-      a: 'No. AeroPDF modifies the rotation tag values of pages natively within the PDF structure. The underlying vector text, fonts, and images are completely untouched and preserve their crisp quality.'
+      a: 'No. TCPDF modifies the rotation tag values of pages natively within the PDF structure. The underlying vector text, fonts, and images are completely untouched and preserve their crisp quality.'
     },
     {
       q: 'Can I rotate individual pages differently?',
@@ -151,7 +151,7 @@ export function RotatePdf() {
     },
     {
       q: 'Is my file processed locally?',
-      a: 'Yes, like all other AeroPDF utilities, the rotation compiles entirely in your browser using local resources. Your files never get sent over the network.'
+      a: 'Yes, like all other TCPDF utilities, the rotation compiles entirely in your browser using local resources. Your files never get sent over the network.'
     }
   ];
 

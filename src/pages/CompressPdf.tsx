@@ -114,11 +114,11 @@ export function CompressPdf() {
   const faqs = [
     {
       q: 'Will my PDF images lose quality?',
-      a: 'AeroPDF uses native Flate lossless stream compression algorithms, which strips metadata redundant definitions and compiles structural objects without modifying visual text vectors or primary image structures.'
+      a: 'TCPDF uses native Flate lossless stream compression algorithms, which strips metadata redundant definitions and compiles structural objects without modifying visual text vectors or primary image structures.'
     },
     {
       q: 'How does client-side compression work?',
-      a: 'Rather than uploading files to third-party databases, AeroPDF recompiles the PDF using WebAssembly standards. It packs standard streams into unified object tables and deflates structural objects natively in-browser.'
+      a: 'Rather than uploading files to third-party databases, TCPDF recompiles the PDF using WebAssembly standards. It packs standard streams into unified object tables and deflates structural objects natively in-browser.'
     },
     {
       q: 'Can I compress password-locked PDFs?',

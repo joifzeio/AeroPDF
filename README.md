@@ -1,14 +1,14 @@
-# AeroPDF: Privacy-First, 100% Client-Side PDF Tools Suite
+# TCPDF: Privacy-First, 100% Client-Side PDF Tools Suite
 
-AeroPDF is a premium, modern SaaS-grade web platform providing 14 high-fidelity PDF utilities. Unlike traditional platforms (like *iLovePDF* or *Smallpdf*), AeroPDF compiles, parses, and stamps all files **100% locally inside the user's browser thread** utilizing WebAssembly, `pdf-lib`, and rendering layers (`pdf.js`). Your documents never leave your computer.
+TCPDF is a premium, modern SaaS-grade web platform providing 14 high-fidelity PDF utilities. Unlike traditional platforms (like *iLovePDF* or *Smallpdf*), TCPDF compiles, parses, and stamps all files **100% locally inside the user's browser thread** utilizing WebAssembly, `pdf-lib`, and rendering layers (`pdf.js`). Your documents never leave your computer.
 
 ---
 
 ## Regulatory Compliance and Privacy By Design
 
-AeroPDF is engineered from the ground up to naturally satisfy the strictest global compliance standards:
+TCPDF is engineered from the ground up to naturally satisfy the strictest global compliance standards:
 
-*   **GDPR, CCPA, and HIPAA Compliance**: Because AeroPDF is purely serverless and stores no cookies, user metrics, or document logs, **no personal data is ever collected, stored, or transmitted**. It is immediately and fully compliant with data preservation rules without requiring extensive security structures.
+*   **GDPR, CCPA, and HIPAA Compliance**: Because TCPDF is purely serverless and stores no cookies, user metrics, or document logs, **no personal data is ever collected, stored, or transmitted**. It is immediately and fully compliant with data preservation rules without requiring extensive security structures.
 *   **Zero Server Uploads**: File binary operations compile on-device in isolated memory. This mitigates risks associated with data breaches or file leakage.
 *   **Transparent MIT Licensing**: Free for commercial and personal usage, ensuring absolute legal transparency.
 
@@ -16,7 +16,7 @@ AeroPDF is engineered from the ground up to naturally satisfy the strictest glob
 
 ## Design Philosophy and UX Features
 
-AeroPDF presents a visual experience designed to stand out:
+TCPDF presents a visual experience designed to stand out:
 *   **Harmonious SaaS Palette**: Curated pastel-hued icon cards with soft, animated pink/purple background blobs that replicate premium web depths.
 *   **Animated Brand Identity**: An uppercase minimal navigation header featuring a beating red SVG heart logo.
 *   **Visual Pill Filtering**: Drag-responsive landing page tabs (All, Organize PDF, Convert PDF, PDF Security) with instant grid sorting.
@@ -53,13 +53,13 @@ AeroPDF presents a visual experience designed to stand out:
 
 ## Tech Stack and Attributions
 
-AeroPDF is built using:
+TCPDF is built using:
 *   **React + TypeScript + Vite**: Fast UI rendering and quick module-hot reloading.
 *   **pdf-lib**: For binary PDF structures assembly, stamping, and compilation.
 *   **pdf.js (pdfjs-dist)**: For canvas rendering, page extracts, and image overlays.
 *   **jszip**: For ZIP packing algorithms.
 
-AeroPDF acknowledges and is built upon standard open-source core libraries:
+TCPDF acknowledges and is built upon standard open-source core libraries:
 *   [pdf-lib](https://github.com/Hopding/pdf-lib) (MIT License)
 *   [pdf.js](https://github.com/mozilla/pdf.js) (Apache 2.0 License)
 *   [JSZip](https://github.com/Stuk/jszip) (MIT License)
@@ -70,8 +70,8 @@ AeroPDF acknowledges and is built upon standard open-source core libraries:
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/joifzeio/AeroPDF.git
-    cd AeroPDF
+    git clone https://github.com/joifzeio/TCPDF.git
+    cd TCPDF
     ```
 
 2.  **Install dependencies**:

@@ -110,7 +110,7 @@ export function JpgToPdf() {
   const faqs = [
     {
       q: 'What image formats are supported?',
-      a: 'AeroPDF natively supports JPG, JPEG, and PNG image conversions. All images are processed securely in your browser and compiled directly into vector-friendly PDF pages.'
+      a: 'TCPDF natively supports JPG, JPEG, and PNG image conversions. All images are processed securely in your browser and compiled directly into vector-friendly PDF pages.'
     },
     {
       q: 'How does margin spacing work?',

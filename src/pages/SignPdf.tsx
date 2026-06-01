@@ -371,7 +371,7 @@ export function SignPdf() {
   const faqs = [
     {
       q: 'Is my digital signature secure?',
-      a: 'Absolutely. AeroPDF is 100% serverless. Your signature and PDF documents remain entirely inside your local browser memory space. Nothing is uploaded or cached on external servers.'
+      a: 'Absolutely. TCPDF is 100% serverless. Your signature and PDF documents remain entirely inside your local browser memory space. Nothing is uploaded or cached on external servers.'
     },
     {
       q: 'Can I type a custom name in a realistic signature script?',
@@ -379,7 +379,7 @@ export function SignPdf() {
     },
     {
       q: 'Will the stamped signature print correctly?',
-      a: 'Yes. AeroPDF embeds the signature natively as high-resolution raster objects vector-aligned to the coordinate grid, ensuring high printing and zoom fidelity.'
+      a: 'Yes. TCPDF embeds the signature natively as high-resolution raster objects vector-aligned to the coordinate grid, ensuring high printing and zoom fidelity.'
     }
   ];
 

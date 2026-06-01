@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://aeropdf.app/</loc>
+    <loc>https://tcpdf.app/</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/merge-pdf</loc>
+    <loc>https://tcpdf.app/#/merge-pdf</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/split-pdf</loc>
+    <loc>https://tcpdf.app/#/split-pdf</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/compress-pdf</loc>
+    <loc>https://tcpdf.app/#/compress-pdf</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/organize-pages</loc>
+    <loc>https://tcpdf.app/#/organize-pages</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/pdf-to-jpg</loc>
+    <loc>https://tcpdf.app/#/pdf-to-jpg</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/jpg-to-pdf</loc>
+    <loc>https://tcpdf.app/#/jpg-to-pdf</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/rotate-pdf</loc>
+    <loc>https://tcpdf.app/#/rotate-pdf</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/remove-pages</loc>
+    <loc>https://tcpdf.app/#/remove-pages</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/add-page-numbers</loc>
+    <loc>https://tcpdf.app/#/add-page-numbers</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/watermark-pdf</loc>
+    <loc>https://tcpdf.app/#/watermark-pdf</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/pdf-to-txt</loc>
+    <loc>https://tcpdf.app/#/pdf-to-txt</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/txt-to-pdf</loc>
+    <loc>https://tcpdf.app/#/txt-to-pdf</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/html-to-pdf</loc>
+    <loc>https://tcpdf.app/#/html-to-pdf</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aeropdf.app/#/sign-pdf</loc>
+    <loc>https://tcpdf.app/#/sign-pdf</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

@@ -42,7 +42,7 @@ export default function App() {
         <header className="header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
             <Link to="/" className="logo">
-              Aero<span className="logo-heart">♥</span>PDF
+              TC<span className="logo-heart">♥</span>PDF
             </Link>
             <nav className="nav-links">
               <Link to="/merge-pdf" className="nav-link">Merge PDF</Link>
@@ -105,7 +105,7 @@ export default function App() {
           <div className="footer-grid">
             <div className="footer-col" style={{ paddingRight: '2rem' }}>
               <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', fontWeight: 900, fontSize: '1.2rem' }}>
-                Aero<span style={{ color: 'var(--color-primary)' }}>♥</span>PDF
+                TC<span style={{ color: 'var(--color-primary)' }}>♥</span>PDF
               </h4>
               <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', lineHeight: 1.6, color: '#64748b' }}>
                 The ultimate 100% private, client-side PDF utility editor. All compilations run securely in-browser. Your files never leave your computer.
@@ -149,7 +149,7 @@ export default function App() {
           </div>
 
           <div className="footer-bottom">
-            <p>&copy; {new Date().getFullYear()} AeroPDF. MIT Licensed. 100% Secure Client-Side Web App.</p>
+            <p>&copy; {new Date().getFullYear()} TCPDF. MIT Licensed. 100% Secure Client-Side Web App.</p>
              <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem' }}>
                <span>Privacy Guaranteed</span>
                <span>No Cookies Tracking</span>

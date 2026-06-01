@@ -109,7 +109,7 @@ export function AddPageNumbers() {
   const faqs = [
     {
       q: 'Will the page numbering adapt to orientation changes?',
-      a: 'Yes! AeroPDF calculates coordinates dynamically for each sheet. Whether a page is landscape or portrait, the numbering is positioned correctly.'
+      a: 'Yes! TCPDF calculates coordinates dynamically for each sheet. Whether a page is landscape or portrait, the numbering is positioned correctly.'
     },
     {
       q: 'What font format is used for page numbering?',
@@ -117,7 +117,7 @@ export function AddPageNumbers() {
     },
     {
       q: 'Is my file processed locally?',
-      a: 'Absolutely. AeroPDF embeds numbering natively within the document inside your browser session. Your documents remain 100% confidential.'
+      a: 'Absolutely. TCPDF embeds numbering natively within the document inside your browser session. Your documents remain 100% confidential.'
     }
   ];
 

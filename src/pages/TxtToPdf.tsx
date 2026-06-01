@@ -92,7 +92,7 @@ export function TxtToPdf() {
   const faqs = [
     {
       q: 'How does long text get paginated?',
-      a: 'AeroPDF features a custom greedy word-wrapping and line measurement compiler. It splits text into paragraphs, wraps sentences dynamically to ensure they never overflow your margins, and automatically spawns new pages when a sheet reaches its bottom boundary.'
+      a: 'TCPDF features a custom greedy word-wrapping and line measurement compiler. It splits text into paragraphs, wraps sentences dynamically to ensure they never overflow your margins, and automatically spawns new pages when a sheet reaches its bottom boundary.'
     },
     {
       q: 'What standard fonts can I choose?',

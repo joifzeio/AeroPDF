@@ -116,7 +116,7 @@ export function SplitPdf() {
     },
     {
       q: 'Are my document contents visible to anyone?',
-      a: 'No. AeroPDF performs all splitting, compiling, and extraction operations strictly client-side. The file never leaves your web browser, ensuring full local privacy.'
+      a: 'No. TCPDF performs all splitting, compiling, and extraction operations strictly client-side. The file never leaves your web browser, ensuring full local privacy.'
     },
     {
       q: 'Can I split a password-protected document?',
