@@ -26,6 +26,8 @@ export default function App() {
     return 'light';
   });
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
@@ -57,24 +59,90 @@ export default function App() {
             </nav>
           </div>
 
-          <button 
-            className="theme-toggle-btn" 
-            onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
-            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
-          >
-            {theme === 'dark' ? (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <button 
+              className="theme-toggle-btn" 
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to night mode'}
+            >
+              {theme === 'dark' ? (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+              )}
+            </button>
+
+            <button 
+              className="mobile-menu-toggle"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open navigation menu"
+              title="Open navigation menu"
+            >
+              <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" style={{ width: '1.25rem', height: '1.25rem' }}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ width: '1.2rem', height: '1.2rem' }}>
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-              </svg>
-            )}
-          </button>
+            </button>
+          </div>
         </header>
+
+        {/* Mobile Navigation Drawer */}
+        <div className={`mobile-menu-overlay ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(false)} />
+        <div className={`mobile-menu-drawer ${menuOpen ? 'open' : ''}`}>
+          <div className="mobile-menu-header">
+            <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
+              TC<span className="logo-heart">♥</span>PDF
+            </Link>
+            <button className="mobile-menu-close" onClick={() => setMenuOpen(false)}>
+              <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" style={{ width: '1.25rem', height: '1.25rem' }}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          <nav className="mobile-nav-links">
+            <div className="mobile-nav-section">PDF Tools</div>
+            <Link to="/merge-pdf" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-red" /> Merge PDF
+            </Link>
+            <Link to="/split-pdf" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-orange" /> Split PDF
+            </Link>
+            <Link to="/compress-pdf" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-blue" /> Compress PDF
+            </Link>
+            <Link to="/rotate-pdf" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-yellow" /> Rotate PDF
+            </Link>
+            <Link to="/organize-pages" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-emerald" /> Organize PDF
+            </Link>
+            
+            <div className="mobile-nav-section">Security & Stamps</div>
+            <Link to="/sign-pdf" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-amber" /> Sign PDF
+            </Link>
+            <Link to="/watermark-pdf" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-violet" /> Watermark PDF
+            </Link>
+            <Link to="/add-page-numbers" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-blue" /> Page Numbers
+            </Link>
+            
+            <div className="mobile-nav-section">Convert Files</div>
+            <Link to="/pdf-to-jpg" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-rose" /> PDF to JPG
+            </Link>
+            <Link to="/jpg-to-pdf" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              <span className="mobile-nav-bullet icon-cyan" /> JPG to PDF
+            </Link>
+          </nav>
+        </div>
 
         {/* Core Workspace Wrapper */}
         <main className="main-content">
